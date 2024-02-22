@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://csmgeeosm4jbu"]
+
+[ext_resource type="Script" path="res://Scenes/Entities/bullet.gd" id="1_bsgye"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_d6tqs"]
+
+[node name="Bullet" type="CharacterBody2D"]
+script = ExtResource("1_bsgye")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_d6tqs")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
