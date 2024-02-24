@@ -1,10 +1,11 @@
 extends CharacterBody2D
 
 @onready var hurtbox = $Hurtbox
+@onready var attack_particles = $ReflectParticles
 @onready var animation_player = $BasicAnimationPlayer
 @onready var sprite = $Sprite2D
 
-const MAX_X_VEL : float = 300
+const MAX_X_VEL : float = 250
 const RUN_ACC : float = MAX_X_VEL / 0.3
 const IDLE_DEACC : float = MAX_X_VEL / 0.2
 const TURN_ACC : float = RUN_ACC + IDLE_DEACC
@@ -15,7 +16,7 @@ const AIR_TURN_ACC : float = AIR_RUN_ACC + AIR_IDLE_DEACC
 
 const MAX_Y_VEL : float = 300
 const GRAVITY : float = 450
-const JUMP_GRAVITY : float = 200
+const JUMP_GRAVITY : float = 380
 
 const JUMP_VEL : float = 300
 
@@ -24,7 +25,9 @@ const COYOTE_JUMP_WINDOW : float = 0.15
 
 const ATTACK_COOLDOWN : float = 0.2
 
-const LAUNCH_VEL : Vector2 = Vector2(300, 400)
+const LAUNCH_VEL : Vector2 = Vector2(360, 400)
+
+const INVINCIBILITY_WINDOW : float = 0.1
 
 var x_input : float = 0
 var jump_just_pressed : bool = false
@@ -38,6 +41,11 @@ var buffer_jump_timer : float = 0
 var coyote_jump_timer : float = 0
 
 var attack_cooldown_timer : float = 0
+
+const RUN_SOUND_COOLDOWN = 0.3
+var run_sound_timer = 0
+
+var invincibility_timer : float = 0
 
 func _ready():
 	GD.player = self
@@ -57,6 +65,11 @@ func get_inputs():
 	action_just_pressed = Input.is_action_just_pressed("action")
 
 func calc_physics(delta):
+	if x_input != 0 and abs(velocity.x) > MAX_X_VEL / 1.2 and is_on_floor() and run_sound_timer <= 0:
+		$RunningSound.pitch_scale = randf_range(0.8, 1.2)
+		$RunningSound.play()
+		run_sound_timer = RUN_SOUND_COOLDOWN
+	
 	if x_input == 0:
 		velocity.x = move_toward(velocity.x, 0, (IDLE_DEACC if is_on_floor() else AIR_IDLE_DEACC) * delta)
 	elif check_turning():
@@ -92,6 +105,8 @@ func check_turning():
 
 func do_jump():
 	velocity.y -= JUMP_VEL
+	$JumpSound.pitch_scale = randf_range(0.8,1.2)
+	$JumpSound.play()
 	jumping = true
 	coyote_jump_ready = false
 	buffer_jump_timer = 0
@@ -105,12 +120,15 @@ func check_actions():
 func do_attack():
 	var dir = get_local_mouse_position().normalized()
 	hurtbox.rotation = Vector2.RIGHT.angle_to(dir)
+	$Hurtbox/CollisionPolygon2D/AttackSound.play()
 	$AttackAnimationPlayer.play("attack")
 
 func tick_timers(delta):
 	coyote_jump_timer -= delta
 	buffer_jump_timer -= delta
 	attack_cooldown_timer -= delta
+	run_sound_timer -= delta
+	invincibility_timer -= delta
 
 func update_animations():
 	var animation_name
@@ -157,7 +175,6 @@ func update_animations():
 			if abs(velocity.x) > MAX_X_VEL / 1.2:
 				animation_name = "AirFast"
 			elif velocity.x == 0:
-				print("!")
 				animation_name = "AirIdle"
 			else:
 				animation_name = "AirSlow"
@@ -169,7 +186,25 @@ func update_animations():
 		sprite.scale.x *= -1
 
 func _on_hurtbox_area_entered(area):
+	$ReflectParticles/ReflectSound.play()
+	GD.scene_manager.player_reflect_trigger()
+	var dir = (area.global_position - global_position).normalized()
+	attack_particles.position = dir * 21
+	attack_particles.rotation = Vector2.RIGHT.angle_to(dir)
+	attack_particles.emitting = true
+	invincibility_timer = INVINCIBILITY_WINDOW
 	if not is_on_floor():
 		var launch_dir = Vector2.RIGHT.rotated(hurtbox.rotation) * -1
+		#if (velocity.x > 0 and launch_dir.x > 0) or (velocity.x < 0 and launch_dir.x < 0):
+			#velocity.x += LAUNCH_VEL.x * launch_dir.x
+		#else:
+			#velocity.x = launch_dir.x * LAUNCH_VEL.x
+		#velocity.y = LAUNCH_VEL.y * launch_dir.y
 		velocity = LAUNCH_VEL * launch_dir
 		jumping = false
+
+func _on_hitbox_body_entered(body):
+	if body.is_in_group("Bullets"):
+		body.collision()
+	if invincibility_timer <= 0:
+		GD.scene_manager.player_death()

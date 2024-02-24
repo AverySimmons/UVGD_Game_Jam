@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bcw7y8qkxrya1"
+path="res://.godot/imported/turret shoot sound.mp3-9cba9af81f411ea4bd43bc4682d29534.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/turret shoot sound.mp3"
+dest_files=["res://.godot/imported/turret shoot sound.mp3-9cba9af81f411ea4bd43bc4682d29534.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

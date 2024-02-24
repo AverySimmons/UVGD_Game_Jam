@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dqy1c3jqfpst1"
+path="res://.godot/imported/portal passive sound.mp3-55d3c59c31eec00d9c80294ab9ccaa05.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/portal passive sound.mp3"
+dest_files=["res://.godot/imported/portal passive sound.mp3-55d3c59c31eec00d9c80294ab9ccaa05.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

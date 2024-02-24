@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://dfo118unxacpc"]
+
+[ext_resource type="Script" path="res://Scenes/Helper/audio_one_shot_particle.gd" id="1_th77c"]
+[ext_resource type="AudioStream" uid="uid://dcv2y4pa1b3sy" path="res://Assets/Audio/bullet explosion sound.mp3" id="2_dyahn"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6rml2"]
+particle_flag_disable_z = true
+spread = 180.0
+initial_velocity_min = 400.0
+initial_velocity_max = 400.0
+scale_min = 2.0
+scale_max = 2.0
+
+[node name="BulletExplosion" type="GPUParticles2D"]
+modulate = Color(1, 0.321569, 0.329412, 1)
+emitting = false
+amount = 12
+process_material = SubResource("ParticleProcessMaterial_6rml2")
+lifetime = 0.15
+one_shot = true
+explosiveness = 1.0
+script = ExtResource("1_th77c")
+
+[node name="Sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_dyahn")
+max_distance = 600.0
+attenuation = 2.21914
+bus = &"SFX"

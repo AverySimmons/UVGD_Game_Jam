@@ -17,6 +17,7 @@ func _physics_process(delta):
 		shoot_timer = shoot_cooldown
 
 func shoot():
+	$ShootSound.play()
 	var new_bullet = bullet_scene.instantiate()
 	new_bullet.global_position = bullet_spawn_point
 	new_bullet.direction = shoot_direction

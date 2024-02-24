@@ -1,7 +1,23 @@
-[gd_scene load_steps=6 format=3 uid="uid://ciqgacc6ggcgv"]
+[gd_scene load_steps=8 format=3 uid="uid://ciqgacc6ggcgv"]
 
 [ext_resource type="Script" path="res://Scenes/Entities/turret.gd" id="1_c5dcf"]
 [ext_resource type="Texture2D" uid="uid://dosvuhd2f3ywl" path="res://Assets/Sprites/uvgdgj_turret.png" id="2_x678h"]
+[ext_resource type="AudioStream" uid="uid://bcw7y8qkxrya1" path="res://Assets/Audio/turret shoot sound.mp3" id="3_mxrhe"]
+
+[sub_resource type="Animation" id="Animation_gkj41"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
 
 [sub_resource type="Animation" id="Animation_f44dn"]
 resource_name = "Shoot"
@@ -19,28 +35,17 @@ tracks/0/keys = {
 "values": [1, 2, 3, 0]
 }
 
-[sub_resource type="Animation" id="Animation_gkj41"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qdtey"]
 _data = {
 "RESET": SubResource("Animation_gkj41"),
 "Shoot": SubResource("Animation_f44dn")
 }
 
-[node name="Turret" type="Node2D" groups=["player"]]
+[sub_resource type="CircleShape2D" id="CircleShape2D_21j1k"]
+radius = 19.0263
+
+[node name="Turret" type="StaticBody2D" groups=["player"]]
+collision_mask = 0
 script = ExtResource("1_c5dcf")
 
 [node name="Sprite" type="Sprite2D" parent="."]
@@ -56,3 +61,12 @@ position = Vector2(49, 0)
 libraries = {
 "": SubResource("AnimationLibrary_qdtey")
 }
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_21j1k")
+
+[node name="ShootSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_mxrhe")
+max_distance = 600.0
+attenuation = 1.93187
+bus = &"SFX"

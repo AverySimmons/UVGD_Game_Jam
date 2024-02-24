@@ -1,13 +1,29 @@
-[gd_scene load_steps=8 format=3 uid="uid://csmgeeosm4jbu"]
+[gd_scene load_steps=9 format=3 uid="uid://csmgeeosm4jbu"]
 
 [ext_resource type="Script" path="res://Scenes/Entities/bullet.gd" id="1_bsgye"]
 [ext_resource type="Texture2D" uid="uid://di7nedmornymv" path="res://Assets/Sprites/uvgdgj_bullet.png" id="2_ptagm"]
+[ext_resource type="AudioStream" uid="uid://dh7jjer3w4fpv" path="res://Assets/Audio/bullet passive sound.mp3" id="3_aywor"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_d6tqs"]
 radius = 11.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wvt4o"]
 radius = 13.0384
+
+[sub_resource type="Animation" id="Animation_0ighu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
 
 [sub_resource type="Animation" id="Animation_qvqql"]
 resource_name = "basic"
@@ -26,21 +42,6 @@ tracks/0/keys = {
 "values": [0, 1]
 }
 
-[sub_resource type="Animation" id="Animation_0ighu"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_45roa"]
 _data = {
 "RESET": SubResource("Animation_0ighu"),
@@ -48,8 +49,9 @@ _data = {
 }
 
 [node name="Bullet" type="CharacterBody2D" groups=["bullets"]]
+modulate = Color(2, 2, 2, 1)
 collision_layer = 18
-collision_mask = 15
+collision_mask = 11
 script = ExtResource("1_bsgye")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -73,3 +75,11 @@ libraries = {
 "": SubResource("AnimationLibrary_45roa")
 }
 autoplay = "basic"
+
+[node name="BulletPassive" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_aywor")
+volume_db = 17.0
+autoplay = true
+max_distance = 200.0
+attenuation = 1.86607
+bus = &"SFX"

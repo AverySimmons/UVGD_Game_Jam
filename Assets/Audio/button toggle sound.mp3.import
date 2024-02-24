@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://brypuvit8xjyb"
+path="res://.godot/imported/button toggle sound.mp3-89e26dc54f9cd80e81ffed2b73912cb9.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/button toggle sound.mp3"
+dest_files=["res://.godot/imported/button toggle sound.mp3-89e26dc54f9cd80e81ffed2b73912cb9.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

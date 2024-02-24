@@ -1,9 +1,56 @@
-[gd_scene load_steps=3 format=3 uid="uid://gqmhcu633lqd"]
+[gd_scene load_steps=11 format=3 uid="uid://gqmhcu633lqd"]
 
 [ext_resource type="Script" path="res://Scenes/Main/scene_manager.gd" id="1_m1r0o"]
-[ext_resource type="PackedScene" uid="uid://dohc4fdb3eqar" path="res://Scenes/Levels/level1.tscn" id="2_3l8es"]
+[ext_resource type="PackedScene" uid="uid://dp6h16276bnf1" path="res://Scenes/Helper/level_transition.tscn" id="2_0dbm5"]
+[ext_resource type="PackedScene" uid="uid://cbcfkkhx4glkn" path="res://Scenes/Main/title_screen.tscn" id="3_0ln82"]
+[ext_resource type="AudioStream" uid="uid://62sjsvga6g8u" path="res://Assets/Audio/death sound.mp3" id="3_b6vfe"]
+[ext_resource type="AudioStream" uid="uid://uipr235r6q7d" path="res://Assets/Audio/level end sound.mp3" id="4_ijkpr"]
+[ext_resource type="AudioStream" uid="uid://duoxueffmnuvq" path="res://Assets/Audio/ui select sound.mp3" id="6_p8eld"]
+[ext_resource type="AudioStream" uid="uid://cbtffwet07uv0" path="res://Assets/Audio/song2.mp3" id="7_7aebi"]
+[ext_resource type="AudioStream" uid="uid://uipn16443egq" path="res://Assets/Audio/song1.mp3" id="8_uu1gc"]
+[ext_resource type="AudioStream" uid="uid://bpswd2l7ft85l" path="res://Assets/Audio/song3.mp3" id="9_ejc67"]
+[ext_resource type="AudioStream" uid="uid://cqtsrlpfae48q" path="res://Assets/Audio/song4.mp3" id="10_dp7wh"]
 
-[node name="SceneManager" type="Node"]
+[node name="SceneManager" type="Node2D"]
+process_mode = 3
 script = ExtResource("1_m1r0o")
 
-[node name="TestLevel" parent="." instance=ExtResource("2_3l8es")]
+[node name="LevelTransition" parent="." instance=ExtResource("2_0dbm5")]
+
+[node name="TitleScreen" parent="." instance=ExtResource("3_0ln82")]
+
+[node name="DeathSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_b6vfe")
+volume_db = -5.0
+bus = &"SFX"
+
+[node name="NextLevelSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_ijkpr")
+volume_db = -2.0
+bus = &"SFX"
+
+[node name="UISelectSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_p8eld")
+bus = &"SFX"
+
+[node name="TitleScreenMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_7aebi")
+bus = &"Music"
+
+[node name="MusicRotation" type="Node2D" parent="."]
+
+[node name="Song1" type="AudioStreamPlayer" parent="MusicRotation"]
+stream = ExtResource("8_uu1gc")
+bus = &"Music"
+
+[node name="Song2" type="AudioStreamPlayer" parent="MusicRotation"]
+stream = ExtResource("9_ejc67")
+bus = &"Music"
+
+[node name="Song3" type="AudioStreamPlayer" parent="MusicRotation"]
+stream = ExtResource("10_dp7wh")
+bus = &"Music"
+
+[connection signal="finished" from="MusicRotation/Song1" to="." method="_on_song_finished"]
+[connection signal="finished" from="MusicRotation/Song2" to="." method="_on_song_finished"]
+[connection signal="finished" from="MusicRotation/Song3" to="." method="_on_song_finished"]

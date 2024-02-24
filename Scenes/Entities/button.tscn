@@ -1,0 +1,95 @@
+[gd_scene load_steps=10 format=3 uid="uid://cqtvamd6en6wn"]
+
+[ext_resource type="Script" path="res://Scenes/Entities/button.gd" id="1_8381p"]
+[ext_resource type="Texture2D" uid="uid://b830a2qi8ud4o" path="res://Assets/Sprites/uvgdgj_target.png" id="1_sxf2u"]
+[ext_resource type="AudioStream" uid="uid://brypuvit8xjyb" path="res://Assets/Audio/button toggle sound.mp3" id="3_vv4oq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j37e5"]
+size = Vector2(6, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ir8hw"]
+size = Vector2(8, 18)
+
+[sub_resource type="Animation" id="Animation_n6k30"]
+resource_name = "Off"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_r8g8o"]
+resource_name = "On"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_dcxlo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0v7dr"]
+_data = {
+"Off": SubResource("Animation_n6k30"),
+"On": SubResource("Animation_r8g8o"),
+"RESET": SubResource("Animation_dcxlo")
+}
+
+[node name="Button" type="StaticBody2D"]
+script = ExtResource("1_8381p")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_j37e5")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 24
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_ir8hw")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_sxf2u")
+hframes = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_0v7dr")
+}
+
+[node name="TriggerSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_vv4oq")
+volume_db = 10.0
+max_distance = 30000.0
+attenuation = 0.31864
+bus = &"SFX"
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

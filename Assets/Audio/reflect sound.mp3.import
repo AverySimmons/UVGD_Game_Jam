@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dkrwhwqhr4j73"
+path="res://.godot/imported/reflect sound.mp3-15c6087a8c4f34a715f37e3f647899b1.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/reflect sound.mp3"
+dest_files=["res://.godot/imported/reflect sound.mp3-15c6087a8c4f34a715f37e3f647899b1.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

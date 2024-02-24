@@ -1,0 +1,138 @@
+[gd_scene load_steps=10 format=3 uid="uid://cbcfkkhx4glkn"]
+
+[ext_resource type="Texture2D" uid="uid://5pdishwdklk8" path="res://Assets/Sprites/uvgdgj_title_screen.png" id="1_e7f0f"]
+[ext_resource type="Script" path="res://Scenes/Main/title_screen.gd" id="2_fpmrx"]
+[ext_resource type="Script" path="res://Scenes/Main/AudioSlider.gd" id="3_8bdfc"]
+[ext_resource type="AudioStream" uid="uid://dqrk11wfiaogx" path="res://Assets/Audio/ui hover sound.mp3" id="4_rqa2i"]
+[ext_resource type="Texture2D" uid="uid://bwp2pvhooskog" path="res://Assets/Sprites/uvgdgj_play_button.png" id="5_7m7q0"]
+[ext_resource type="Texture2D" uid="uid://bo8qowxx2wdfg" path="res://Assets/Sprites/uvgdgj_play_button_pressed.png" id="6_1sss4"]
+
+[sub_resource type="Animation" id="Animation_uip4t"]
+resource_name = "Basic"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+
+[sub_resource type="Animation" id="Animation_03vyw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_n363x"]
+_data = {
+"Basic": SubResource("Animation_uip4t"),
+"RESET": SubResource("Animation_03vyw")
+}
+
+[node name="TitleScreen" type="Sprite2D"]
+position = Vector2(336, 189)
+texture = ExtResource("1_e7f0f")
+hframes = 8
+script = ExtResource("2_fpmrx")
+
+[node name="MasterSlider" type="HSlider" parent="."]
+offset_left = -164.0
+offset_top = 79.0
+offset_right = 172.0
+offset_bottom = 95.0
+max_value = 1.0
+step = 0.001
+script = ExtResource("3_8bdfc")
+bus_name = "Master"
+
+[node name="Audio" type="AudioStreamPlayer" parent="MasterSlider"]
+stream = ExtResource("4_rqa2i")
+volume_db = -5.0
+bus = &"SFX"
+
+[node name="Label" type="Label" parent="MasterSlider"]
+layout_mode = 0
+offset_left = -85.0
+offset_right = -45.0
+offset_bottom = 23.0
+text = "Master:"
+
+[node name="SFXSlider" type="HSlider" parent="."]
+offset_left = -164.0
+offset_top = 111.0
+offset_right = 172.0
+offset_bottom = 127.0
+max_value = 1.0
+step = 0.001
+script = ExtResource("3_8bdfc")
+bus_name = "SFX"
+
+[node name="Audio" type="AudioStreamPlayer" parent="SFXSlider"]
+stream = ExtResource("4_rqa2i")
+volume_db = -5.0
+bus = &"SFX"
+
+[node name="Label" type="Label" parent="SFXSlider"]
+layout_mode = 0
+offset_left = -58.0
+offset_right = -18.0
+offset_bottom = 23.0
+text = "SFX:"
+
+[node name="MusicSlider" type="HSlider" parent="."]
+offset_left = -164.0
+offset_top = 143.0
+offset_right = 172.0
+offset_bottom = 159.0
+max_value = 1.0
+step = 0.001
+script = ExtResource("3_8bdfc")
+bus_name = "Music"
+
+[node name="Label" type="Label" parent="MusicSlider"]
+layout_mode = 0
+offset_left = -76.0
+offset_right = -26.0
+offset_bottom = 23.0
+text = "Music:"
+
+[node name="PlayButton" type="TextureButton" parent="."]
+texture_filter = 1
+offset_left = -124.0
+offset_top = -6.0
+offset_right = -10.0
+offset_bottom = 34.0
+scale = Vector2(2, 2)
+action_mode = 0
+texture_normal = ExtResource("5_7m7q0")
+texture_hover = ExtResource("6_1sss4")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_n363x")
+}
+autoplay = "Basic"
+
+[node name="HoverSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_rqa2i")
+volume_db = -5.0
+bus = &"SFX"
+
+[connection signal="button_down" from="PlayButton" to="." method="_on_play_button_button_down"]
+[connection signal="mouse_entered" from="PlayButton" to="." method="_on_play_button_mouse_entered"]
