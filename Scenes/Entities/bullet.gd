@@ -25,6 +25,7 @@ func _physics_process(delta):
 			new_particle.global_position = global_position
 			GD.scene_manager.cur_level.particles.add_child(new_particle)
 			direction = Vector2.RIGHT.rotated(GD.player.hurtbox.rotation)
+			speed *= 2
 			currently_overlapping = true
 	else:
 		currently_overlapping = false

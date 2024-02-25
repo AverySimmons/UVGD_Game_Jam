@@ -4,6 +4,10 @@ extends Node
 
 @onready var levels = [
 	preload("res://Scenes/Levels/level0.tscn"),
+	preload("res://Scenes/Levels/level1.tscn"),
+	preload("res://Scenes/Levels/level2.tscn"),
+	preload("res://Scenes/Levels/level3.tscn"),
+	preload("res://Scenes/Levels/level4.tscn"),
 ]
 
 @onready var win_screen_scene = preload("res://Scenes/Main/win_screen.tscn")
@@ -30,6 +34,7 @@ func _physics_process(delta):
 func start_game():
 	$TitleScreenMusic.stop()
 	$UISelectSound.play()
+	level_transition.position = Vector2.ZERO
 	var pos = cur_level.get_node("PlayButton").global_position + Vector2(114,40)
 	await level_transition.levelEnd(pos)
 	remove_child(cur_level)
@@ -59,6 +64,7 @@ func next_level():
 		cur_level = win_screen
 		add_child(win_screen)
 		level_num = 0
+		level_transition.global_position = Vector2(0,0)
 		await level_transition.levelStart(cur_level.get_node("PlayButton").global_position + Vector2(114,40))
 	else:
 		await load_level()

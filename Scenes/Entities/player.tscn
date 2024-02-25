@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://cjku5u20lorku"]
+[gd_scene load_steps=33 format=3 uid="uid://cjku5u20lorku"]
 
 [ext_resource type="Script" path="res://Scenes/Entities/player.gd" id="1_c2cga"]
 [ext_resource type="Texture2D" uid="uid://cj3w8fjf2hui7" path="res://Assets/Sprites/uvgdgj_player_attack.png" id="2_wkvy5"]
@@ -8,6 +8,17 @@
 [ext_resource type="AudioStream" uid="uid://cpoo0x6cjqfg1" path="res://Assets/Audio/player walking sound.mp3" id="5_jn50h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ro2xq"]
+size = Vector2(24, 20)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_41vur"]
+particle_flag_disable_z = true
+direction = Vector3(-1, 0, 0)
+spread = 10.0
+initial_velocity_min = 150.0
+initial_velocity_max = 200.0
+gravity = Vector3(0, 98, 0)
+scale_min = 2.0
+scale_max = 2.0
 
 [sub_resource type="Animation" id="Animation_2tvux"]
 length = 0.001
@@ -465,6 +476,12 @@ bus = &"SFX"
 texture_filter = 1
 texture = ExtResource("3_vcm17")
 hframes = 22
+
+[node name="RunParticles" type="GPUParticles2D" parent="Sprite2D"]
+position = Vector2(19, 12)
+emitting = false
+process_material = SubResource("ParticleProcessMaterial_41vur")
+lifetime = 0.3
 
 [node name="AttackAnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

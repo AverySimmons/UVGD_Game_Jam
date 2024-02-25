@@ -453,11 +453,242 @@ position = Vector2(7640, 1633)
 switches = [NodePath("../../Buttons/Button")]
 on = true
 
+[node name="ToggleBlock67" parent="ToggleBlocks" node_paths=PackedStringArray("switches") instance=ExtResource("5_fu8ea")]
+position = Vector2(6920, 1649)
+switches = [NodePath("../../Buttons/Button")]
+on = true
+
+[node name="ToggleBlock68" parent="ToggleBlocks" node_paths=PackedStringArray("switches") instance=ExtResource("5_fu8ea")]
+position = Vector2(6936, 1649)
+switches = [NodePath("../../Buttons/Button")]
+on = true
+
+[node name="ToggleBlock69" parent="ToggleBlocks" node_paths=PackedStringArray("switches") instance=ExtResource("5_fu8ea")]
+position = Vector2(6952, 1649)
+switches = [NodePath("../../Buttons/Button")]
+on = true
+
+[node name="ToggleBlock70" parent="ToggleBlocks" node_paths=PackedStringArray("switches") instance=ExtResource("5_fu8ea")]
+position = Vector2(6968, 1649)
+switches = [NodePath("../../Buttons/Button")]
+on = true
+
+[node name="ToggleBlock71" parent="ToggleBlocks" node_paths=PackedStringArray("switches") instance=ExtResource("5_fu8ea")]
+position = Vector2(6984, 1649)
+switches = [NodePath("../../Buttons/Button")]
+on = true
+
+[node name="ToggleBlock72" parent="ToggleBlocks" node_paths=PackedStringArray("switches") instance=ExtResource("5_fu8ea")]
+position = Vector2(7000, 1649)
+switches = [NodePath("../../Buttons/Button")]
+on = true
+
+[node name="ToggleBlock73" parent="ToggleBlocks" node_paths=PackedStringArray("switches") instance=ExtResource("5_fu8ea")]
+position = Vector2(7016, 1649)
+switches = [NodePath("../../Buttons/Button")]
+on = true
+
+[node name="ToggleBlock74" parent="ToggleBlocks" node_paths=PackedStringArray("switches") instance=ExtResource("5_fu8ea")]
+position = Vector2(7032, 1649)
+switches = [NodePath("../../Buttons/Button")]
+on = true
+
+[node name="ToggleBlock75" parent="ToggleBlocks" node_paths=PackedStringArray("switches") instance=ExtResource("5_fu8ea")]
+position = Vector2(7048, 1649)
+switches = [NodePath("../../Buttons/Button")]
+on = true
+
+[node name="ToggleBlock76" parent="ToggleBlocks" node_paths=PackedStringArray("switches") instance=ExtResource("5_fu8ea")]
+position = Vector2(7064, 1649)
+switches = [NodePath("../../Buttons/Button")]
+on = true
+
+[node name="ToggleBlock77" parent="ToggleBlocks" node_paths=PackedStringArray("switches") instance=ExtResource("5_fu8ea")]
+position = Vector2(7080, 1649)
+switches = [NodePath("../../Buttons/Button")]
+on = true
+
+[node name="ToggleBlock78" parent="ToggleBlocks" node_paths=PackedStringArray("switches") instance=ExtResource("5_fu8ea")]
+position = Vector2(7096, 1649)
+switches = [NodePath("../../Buttons/Button")]
+on = true
+
+[node name="ToggleBlock79" parent="ToggleBlocks" node_paths=PackedStringArray("switches") instance=ExtResource("5_fu8ea")]
+position = Vector2(7112, 1649)
+switches = [NodePath("../../Buttons/Button")]
+on = true
+
+[node name="ToggleBlock80" parent="ToggleBlocks" node_paths=PackedStringArray("switches") instance=ExtResource("5_fu8ea")]
+position = Vector2(7128, 1649)
+switches = [NodePath("../../Buttons/Button")]
+on = true
+
+[node name="ToggleBlock81" parent="ToggleBlocks" node_paths=PackedStringArray("switches") instance=ExtResource("5_fu8ea")]
+position = Vector2(7144, 1649)
+switches = [NodePath("../../Buttons/Button")]
+on = true
+
+[node name="ToggleBlock82" parent="ToggleBlocks" node_paths=PackedStringArray("switches") instance=ExtResource("5_fu8ea")]
+position = Vector2(7160, 1649)
+switches = [NodePath("../../Buttons/Button")]
+on = true
+
+[node name="ToggleBlock83" parent="ToggleBlocks" node_paths=PackedStringArray("switches") instance=ExtResource("5_fu8ea")]
+position = Vector2(7176, 1649)
+switches = [NodePath("../../Buttons/Button")]
+on = true
+
+[node name="ToggleBlock84" parent="ToggleBlocks" node_paths=PackedStringArray("switches") instance=ExtResource("5_fu8ea")]
+position = Vector2(7192, 1649)
+switches = [NodePath("../../Buttons/Button")]
+on = true
+
+[node name="ToggleBlock85" parent="ToggleBlocks" node_paths=PackedStringArray("switches") instance=ExtResource("5_fu8ea")]
+position = Vector2(7208, 1649)
+switches = [NodePath("../../Buttons/Button")]
+on = true
+
+[node name="ToggleBlock86" parent="ToggleBlocks" node_paths=PackedStringArray("switches") instance=ExtResource("5_fu8ea")]
+position = Vector2(7224, 1649)
+switches = [NodePath("../../Buttons/Button")]
+on = true
+
+[node name="ToggleBlock87" parent="ToggleBlocks" node_paths=PackedStringArray("switches") instance=ExtResource("5_fu8ea")]
+position = Vector2(7240, 1649)
+switches = [NodePath("../../Buttons/Button")]
+on = true
+
+[node name="ToggleBlock88" parent="ToggleBlocks" node_paths=PackedStringArray("switches") instance=ExtResource("5_fu8ea")]
+position = Vector2(7256, 1649)
+switches = [NodePath("../../Buttons/Button")]
+on = true
+
+[node name="ToggleBlock89" parent="ToggleBlocks" node_paths=PackedStringArray("switches") instance=ExtResource("5_fu8ea")]
+position = Vector2(7272, 1649)
+switches = [NodePath("../../Buttons/Button")]
+on = true
+
+[node name="ToggleBlock90" parent="ToggleBlocks" node_paths=PackedStringArray("switches") instance=ExtResource("5_fu8ea")]
+position = Vector2(7288, 1649)
+switches = [NodePath("../../Buttons/Button")]
+on = true
+
+[node name="ToggleBlock91" parent="ToggleBlocks" node_paths=PackedStringArray("switches") instance=ExtResource("5_fu8ea")]
+position = Vector2(7304, 1649)
+switches = [NodePath("../../Buttons/Button")]
+on = true
+
+[node name="ToggleBlock92" parent="ToggleBlocks" node_paths=PackedStringArray("switches") instance=ExtResource("5_fu8ea")]
+position = Vector2(7320, 1649)
+switches = [NodePath("../../Buttons/Button")]
+on = true
+
+[node name="ToggleBlock93" parent="ToggleBlocks" node_paths=PackedStringArray("switches") instance=ExtResource("5_fu8ea")]
+position = Vector2(7336, 1649)
+switches = [NodePath("../../Buttons/Button")]
+on = true
+
+[node name="ToggleBlock94" parent="ToggleBlocks" node_paths=PackedStringArray("switches") instance=ExtResource("5_fu8ea")]
+position = Vector2(7352, 1649)
+switches = [NodePath("../../Buttons/Button")]
+on = true
+
+[node name="ToggleBlock95" parent="ToggleBlocks" node_paths=PackedStringArray("switches") instance=ExtResource("5_fu8ea")]
+position = Vector2(7368, 1649)
+switches = [NodePath("../../Buttons/Button")]
+on = true
+
+[node name="ToggleBlock96" parent="ToggleBlocks" node_paths=PackedStringArray("switches") instance=ExtResource("5_fu8ea")]
+position = Vector2(7384, 1649)
+switches = [NodePath("../../Buttons/Button")]
+on = true
+
+[node name="ToggleBlock97" parent="ToggleBlocks" node_paths=PackedStringArray("switches") instance=ExtResource("5_fu8ea")]
+position = Vector2(7400, 1649)
+switches = [NodePath("../../Buttons/Button")]
+on = true
+
+[node name="ToggleBlock98" parent="ToggleBlocks" node_paths=PackedStringArray("switches") instance=ExtResource("5_fu8ea")]
+position = Vector2(7416, 1649)
+switches = [NodePath("../../Buttons/Button")]
+on = true
+
+[node name="ToggleBlock99" parent="ToggleBlocks" node_paths=PackedStringArray("switches") instance=ExtResource("5_fu8ea")]
+position = Vector2(7432, 1649)
+switches = [NodePath("../../Buttons/Button")]
+on = true
+
+[node name="ToggleBlock100" parent="ToggleBlocks" node_paths=PackedStringArray("switches") instance=ExtResource("5_fu8ea")]
+position = Vector2(7448, 1649)
+switches = [NodePath("../../Buttons/Button")]
+on = true
+
+[node name="ToggleBlock101" parent="ToggleBlocks" node_paths=PackedStringArray("switches") instance=ExtResource("5_fu8ea")]
+position = Vector2(7464, 1649)
+switches = [NodePath("../../Buttons/Button")]
+on = true
+
+[node name="ToggleBlock102" parent="ToggleBlocks" node_paths=PackedStringArray("switches") instance=ExtResource("5_fu8ea")]
+position = Vector2(7480, 1649)
+switches = [NodePath("../../Buttons/Button")]
+on = true
+
+[node name="ToggleBlock103" parent="ToggleBlocks" node_paths=PackedStringArray("switches") instance=ExtResource("5_fu8ea")]
+position = Vector2(7496, 1649)
+switches = [NodePath("../../Buttons/Button")]
+on = true
+
+[node name="ToggleBlock104" parent="ToggleBlocks" node_paths=PackedStringArray("switches") instance=ExtResource("5_fu8ea")]
+position = Vector2(7512, 1649)
+switches = [NodePath("../../Buttons/Button")]
+on = true
+
+[node name="ToggleBlock105" parent="ToggleBlocks" node_paths=PackedStringArray("switches") instance=ExtResource("5_fu8ea")]
+position = Vector2(7528, 1649)
+switches = [NodePath("../../Buttons/Button")]
+on = true
+
+[node name="ToggleBlock106" parent="ToggleBlocks" node_paths=PackedStringArray("switches") instance=ExtResource("5_fu8ea")]
+position = Vector2(7544, 1649)
+switches = [NodePath("../../Buttons/Button")]
+on = true
+
+[node name="ToggleBlock107" parent="ToggleBlocks" node_paths=PackedStringArray("switches") instance=ExtResource("5_fu8ea")]
+position = Vector2(7560, 1649)
+switches = [NodePath("../../Buttons/Button")]
+on = true
+
+[node name="ToggleBlock108" parent="ToggleBlocks" node_paths=PackedStringArray("switches") instance=ExtResource("5_fu8ea")]
+position = Vector2(7576, 1649)
+switches = [NodePath("../../Buttons/Button")]
+on = true
+
+[node name="ToggleBlock109" parent="ToggleBlocks" node_paths=PackedStringArray("switches") instance=ExtResource("5_fu8ea")]
+position = Vector2(7592, 1649)
+switches = [NodePath("../../Buttons/Button")]
+on = true
+
+[node name="ToggleBlock110" parent="ToggleBlocks" node_paths=PackedStringArray("switches") instance=ExtResource("5_fu8ea")]
+position = Vector2(7608, 1649)
+switches = [NodePath("../../Buttons/Button")]
+on = true
+
+[node name="ToggleBlock111" parent="ToggleBlocks" node_paths=PackedStringArray("switches") instance=ExtResource("5_fu8ea")]
+position = Vector2(7624, 1649)
+switches = [NodePath("../../Buttons/Button")]
+on = true
+
+[node name="ToggleBlock112" parent="ToggleBlocks" node_paths=PackedStringArray("switches") instance=ExtResource("5_fu8ea")]
+position = Vector2(7640, 1649)
+switches = [NodePath("../../Buttons/Button")]
+on = true
+
 [node name="Turrets" type="Node2D" parent="."]
 
 [node name="Turret" parent="Turrets" instance=ExtResource("4_psrxs")]
 position = Vector2(5457, 1932)
 rotation = 3.14159
+shoot_cooldown = 2.4
 
 [node name="Turret2" parent="Turrets" instance=ExtResource("4_psrxs")]
 position = Vector2(5938, 1931)
@@ -492,7 +723,7 @@ position = Vector2(191, 2205)
 [node name="Particles" type="Node2D" parent="."]
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(190, 2205)
+position = Vector2(191, 2165)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_bv6dg")
@@ -531,10 +762,10 @@ text = "Use LEFT CLICK to REFLECT
 For now just use it to hit that SWITCH"
 
 [node name="Label5" type="Label" parent="TutorialText"]
-offset_left = 4030.0
-offset_top = 2021.0
-offset_right = 4285.0
-offset_bottom = 2096.0
+offset_left = 3924.0
+offset_top = 2018.0
+offset_right = 4179.0
+offset_bottom = 2093.0
 text = "(If you REFLECT 
 a SWITCH mid-air
 it LAUNCHES you!!)"
@@ -549,11 +780,12 @@ Note that not only can you LAUNCH off bullets
 You will also reflect them!"
 
 [node name="Label7" type="Label" parent="TutorialText"]
-offset_left = 5515.0
+offset_left = 5497.0
 offset_top = 1762.0
-offset_right = 5855.0
-offset_bottom = 1785.0
-text = "Try climbing this wall by REFLECTING bullets"
+offset_right = 5700.0
+offset_bottom = 1811.0
+text = "Try climbing this wall by
+ LAUNCHING off bullets"
 
 [node name="Label8" type="Label" parent="TutorialText"]
 offset_left = 6210.0

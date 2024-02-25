@@ -2,6 +2,7 @@ extends StaticBody2D
 
 @export var switches : Array[Node] = []
 @export var on = false
+@export var inversed = false
 
 @onready var animation_player = $AnimationPlayer
 
@@ -12,7 +13,7 @@ func _ready():
 func _physics_process(delta):
 	var switch_on = true
 	for switch in switches:
-		if not switch.on:
+		if switch.on == inversed:
 			switch_on = false
 			break
 	

@@ -23,6 +23,7 @@ GD="*res://Singletons/game_data.gd"
 
 window/size/viewport_width=672
 window/size/viewport_height=378
+window/size/mode=3
 window/stretch/mode="canvas_items"
 
 [input]

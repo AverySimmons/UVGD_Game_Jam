@@ -12,7 +12,7 @@ const TURN_ACC : float = RUN_ACC + IDLE_DEACC
 
 const AIR_RUN_ACC : float = MAX_X_VEL / 0.6
 const AIR_IDLE_DEACC : float = MAX_X_VEL / 2
-const AIR_TURN_ACC : float = AIR_RUN_ACC + AIR_IDLE_DEACC
+const AIR_TURN_ACC : float = MAX_X_VEL / 0.3
 
 const MAX_Y_VEL : float = 300
 const GRAVITY : float = 450
@@ -47,6 +47,8 @@ var run_sound_timer = 0
 
 var invincibility_timer : float = 0
 
+var dead : bool = false
+
 func _ready():
 	GD.player = self
 
@@ -65,7 +67,7 @@ func get_inputs():
 	action_just_pressed = Input.is_action_just_pressed("action")
 
 func calc_physics(delta):
-	if x_input != 0 and abs(velocity.x) > MAX_X_VEL / 1.2 and is_on_floor() and run_sound_timer <= 0:
+	if x_input != 0 and abs(velocity.x) > MAX_X_VEL / 1.1 and is_on_floor() and run_sound_timer <= 0:
 		$RunningSound.pitch_scale = randf_range(0.8, 1.2)
 		$RunningSound.play()
 		run_sound_timer = RUN_SOUND_COOLDOWN
@@ -132,10 +134,12 @@ func tick_timers(delta):
 
 func update_animations():
 	var animation_name
+	var run_part = false
 	
 	if is_on_floor():
 		if abs(velocity.x) > MAX_X_VEL / 1.2:
 			animation_name = "GroundFast"
+			run_part = true
 		elif velocity.x == 0:
 			animation_name = "GroundIdle"
 		else:
@@ -182,17 +186,20 @@ func update_animations():
 	if animation_player.current_animation != animation_name:
 		animation_player.play(animation_name)
 	
+	if run_part != $Sprite2D/RunParticles.emitting:
+		$Sprite2D/RunParticles.emitting = run_part
+	
 	if (sprite.scale.x > 0 and velocity.x < 0) or (sprite.scale.x < 0 and velocity.x > 0):
 		sprite.scale.x *= -1
 
 func _on_hurtbox_area_entered(area):
 	$ReflectParticles/ReflectSound.play()
+	invincibility_timer = INVINCIBILITY_WINDOW
 	GD.scene_manager.player_reflect_trigger()
 	var dir = (area.global_position - global_position).normalized()
 	attack_particles.position = dir * 21
 	attack_particles.rotation = Vector2.RIGHT.angle_to(dir)
 	attack_particles.emitting = true
-	invincibility_timer = INVINCIBILITY_WINDOW
 	if not is_on_floor():
 		var launch_dir = Vector2.RIGHT.rotated(hurtbox.rotation) * -1
 		#if (velocity.x > 0 and launch_dir.x > 0) or (velocity.x < 0 and launch_dir.x < 0):
@@ -206,5 +213,6 @@ func _on_hurtbox_area_entered(area):
 func _on_hitbox_body_entered(body):
 	if body.is_in_group("Bullets"):
 		body.collision()
-	if invincibility_timer <= 0:
+	if invincibility_timer <= 0 and not dead:
+		dead = true
 		GD.scene_manager.player_death()
